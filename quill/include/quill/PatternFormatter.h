@@ -427,7 +427,7 @@ PatternFormatter::format(
                                            logger_name, logline_info);
 
   // Format the user requested string
-  fmt::format_to(std::back_inserter(_formatted_log_record), logline_info.message_format(), args...);
+  fmt::format_to(std::back_inserter(_formatted_log_record), fmt::runtime(logline_info.message_format()), args...);
 
   // Format part 3 of the pattern
   _pattern_formatter_helper_part_3->format(_formatted_log_record, timestamp, thread_id, thread_name,
